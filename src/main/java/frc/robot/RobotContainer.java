@@ -4,6 +4,9 @@
 
 package frc.robot;
 
+import edu.wpi.first.util.sendable.Sendable;
+import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.RunCommand;
 import edu.wpi.first.wpilibj2.command.button.CommandJoystick;
@@ -15,6 +18,7 @@ import frc.robot.commands.Autos;
 import frc.robot.commands.ExampleCommand;
 import frc.robot.commands.FeedWheelCMD;
 import frc.robot.commands.LaunchWheelCMD;
+import frc.robot.commands.Auto.Auto01;
 import frc.robot.subsystems.ExampleSubsystem;
 import frc.robot.subsystems.LauncherSub;
 import frc.robot.subsystems.TankDriveSub;
@@ -27,6 +31,10 @@ import frc.robot.subsystems.TankDriveSub;
  */
 public class RobotContainer {
   private TankDriveSub tankDriveSub = new TankDriveSub();
+
+  private Auto01 auto01 = new Auto01(tankDriveSub); 
+
+  SendableChooser<Command> m_Chooser = new SendableChooser<>();
 
   public CommandJoystick controller5 = new CommandJoystick(5);
   public LauncherSub launcherSub = new LauncherSub();
@@ -75,6 +83,9 @@ public class RobotContainer {
     // Schedule `exampleMethodCommand` when the Xbox controller's B button is pressed,
     // cancelling on release.
     m_driverController.b().whileTrue(m_exampleSubsystem.exampleMethodCommand());
+    m_Chooser.setDefaultOption("auto01", auto01);
+    //m_Chooser.addOption(Name, auto02);
+    SmartDashboard.putData("Auto Choices", m_Chooser);
   }
 
   /**
@@ -84,6 +95,6 @@ public class RobotContainer {
    */
   public Command getAutonomousCommand() {
     // An example command will be run in autonomous
-    return Autos.exampleAuto(m_exampleSubsystem);
+    return m_Chooser.getSelected();
   }
 }

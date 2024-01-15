@@ -17,7 +17,8 @@ public final class Constants {
   public static class OperatorConstants {
     public static final int kDriverControllerPort = 0;
   }
-  public static final double driveSpeed = 1.0;
+  public static final double driveSpeed = 1.0; /*teleop */
+  public static final double autoDriveSpeed = 0.3;
   public static final double feedSpeed = 1.0;
   public static final double launchSpeed = 1.0;
   public static class buttonList {
