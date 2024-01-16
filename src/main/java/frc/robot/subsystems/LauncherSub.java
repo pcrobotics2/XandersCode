@@ -7,6 +7,7 @@ package frc.robot.subsystems;
 import edu.wpi.first.wpilibj.motorcontrol.MotorController;
 import edu.wpi.first.wpilibj.motorcontrol.MotorControllerGroup;
 import edu.wpi.first.wpilibj.motorcontrol.Talon;
+import edu.wpi.first.wpilibj.motorcontrol.Spark;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
@@ -18,8 +19,8 @@ public class LauncherSub extends SubsystemBase {
   public MotorControllerGroup launcherGroup;
 
   public LauncherSub() {
-    upLauncher = new Talon(0);
-    downLauncher = new Talon(1); 
+    upLauncher = new Spark(5);
+    downLauncher = new Spark(6); 
 
     this.launcherGroup = new MotorControllerGroup(
       downLauncher, 
