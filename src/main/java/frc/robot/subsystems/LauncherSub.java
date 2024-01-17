@@ -4,10 +4,10 @@
 
 package frc.robot.subsystems;
 
+import com.revrobotics.CANSparkMax;
+import com.revrobotics.CANSparkLowLevel.MotorType;
+
 import edu.wpi.first.wpilibj.motorcontrol.MotorController;
-import edu.wpi.first.wpilibj.motorcontrol.MotorControllerGroup;
-import edu.wpi.first.wpilibj.motorcontrol.Talon;
-import edu.wpi.first.wpilibj.motorcontrol.Spark;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
@@ -16,16 +16,12 @@ public class LauncherSub extends SubsystemBase {
   //motor up is higher than motor down
   public MotorController upLauncher;
   public MotorController downLauncher;
-  public MotorControllerGroup launcherGroup;
 
   public LauncherSub() {
-    upLauncher = new Spark(5);
-    downLauncher = new Spark(6); 
+    CANSparkMax upLauncher = new CANSparkMax(10, MotorType.kBrushless);
+    CANSparkMax downLauncher = new CANSparkMax(14, MotorType.kBrushless);
 
-    this.launcherGroup = new MotorControllerGroup(
-      downLauncher, 
-      upLauncher
-    );
+    upLauncher.follow(downLauncher);
   }
 
   // public Command getIntakeCommand() {
@@ -39,13 +35,14 @@ public class LauncherSub extends SubsystemBase {
   //     });
   // }
   public void setLaunchWheel(double speed) {
-    launcherGroup.set(speed);
+    downLauncher.set(speed);
   }
   public void setFeedWheel(double speed) {
-    launcherGroup.set(speed);
+    //feed goes opposite launch
+    downLauncher.set(-speed);
   }
   public void stop() {
-    launcherGroup.set(0);
+    downLauncher.set(0);
   }
   
   @Override

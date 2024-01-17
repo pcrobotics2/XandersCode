@@ -27,7 +27,8 @@ public class MoveAuto extends Command {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-        this.tankDriveSub.drive(Constants.autoDriveSpeed, Constants.autoDriveSpeed);
+//Didn't stay running without this
+    this.tankDriveSub.drive(Constants.autoDriveSpeed, Constants.autoDriveSpeed);
 
   }
 
