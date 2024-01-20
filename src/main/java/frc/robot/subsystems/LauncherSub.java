@@ -38,7 +38,6 @@ public class LauncherSub extends SubsystemBase {
     downLauncher.set(speed);
   }
   public void setFeedWheel(double speed) {
-    //feed goes opposite launch
     downLauncher.set(speed);
   }
   public void stop() {

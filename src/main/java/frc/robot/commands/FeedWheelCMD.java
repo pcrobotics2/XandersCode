@@ -25,7 +25,7 @@ public class FeedWheelCMD extends Command {
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
-    launcherSub.setFeedWheel(Constants.feedSpeed);
+    launcherSub.setFeedWheel(Constants.feedSpeed * -1);
   }
 
   // Called every time the scheduler runs while the command is scheduled.
@@ -43,6 +43,6 @@ public class FeedWheelCMD extends Command {
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    return true;
+    return false;
   }
 }

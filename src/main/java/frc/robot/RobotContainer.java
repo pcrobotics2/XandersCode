@@ -35,8 +35,8 @@ public class RobotContainer {
   private Auto01 auto01 = new Auto01(tankDriveSub); 
 
   SendableChooser<Command> m_Chooser = new SendableChooser<>();
-
-  public CommandJoystick controller5 = new CommandJoystick(5);
+//careful setting the port for controller
+  public CommandJoystick controller5 = new CommandJoystick(0);
   public LauncherSub launcherSub = new LauncherSub();
   public FeedWheelCMD feedWheelCMD = new FeedWheelCMD(launcherSub);
   public LaunchWheelCMD launchWheelCMD = new LaunchWheelCMD(launcherSub);
@@ -61,8 +61,8 @@ public class RobotContainer {
         tankDriveSub
       )
     );
+    controller5.button(Constants.buttonList.y).whileTrue(launchWheelCMD);
     controller5.button(Constants.buttonList.a).whileTrue(feedWheelCMD);
-    controller5.button(Constants.buttonList.b).whileTrue(launchWheelCMD);
 
   }
 

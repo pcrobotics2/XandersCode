@@ -19,8 +19,8 @@ public final class Constants {
   }
   public static final double driveSpeed = 1.0; /*teleop */
   public static final double autoDriveSpeed = 0.5;
-  public static final double feedSpeed = 0.4;
-  public static final double launchSpeed = 0.4;
+  public static final double feedSpeed = 0.05;
+  public static final double launchSpeed = 0.05;
   public static class buttonList {
     public static final int a = 1;
     public static final int b = 2; 
