@@ -36,7 +36,7 @@ public class RobotContainer {
 
   SendableChooser<Command> m_Chooser = new SendableChooser<>();
 //careful setting the port for controller
-  public CommandJoystick controller5 = new CommandJoystick(0);
+  public CommandJoystick controller5 = new CommandJoystick(5);
   public LauncherSub launcherSub = new LauncherSub();
   public FeedWheelCMD feedWheelCMD = new FeedWheelCMD(launcherSub);
   public LaunchWheelCMD launchWheelCMD = new LaunchWheelCMD(launcherSub);
