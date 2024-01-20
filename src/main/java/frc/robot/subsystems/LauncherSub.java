@@ -14,12 +14,12 @@ import edu.wpi.first.wpilibj2.command.SubsystemBase;
 public class LauncherSub extends SubsystemBase {
   /** Creates a new launcher. */
   //motor up is higher than motor down
-  public MotorController upLauncher;
-  public MotorController downLauncher;
+  public CANSparkMax upLauncher;
+  public CANSparkMax downLauncher;
 
   public LauncherSub() {
-    CANSparkMax upLauncher = new CANSparkMax(10, MotorType.kBrushless);
-    CANSparkMax downLauncher = new CANSparkMax(14, MotorType.kBrushless);
+    this.upLauncher = new CANSparkMax(12, MotorType.kBrushless);
+    this.downLauncher = new CANSparkMax(14, MotorType.kBrushless);
 
     upLauncher.follow(downLauncher);
   }
@@ -30,7 +30,7 @@ public class LauncherSub extends SubsystemBase {
   //       setFeedWheel(kIntakeFeederSpeed);
   //       setLaunchWheel(kIntakeLauncherSpeed);
   //     }, 
-  //     () -> {
+  //     () -> 
   //       stop();
   //     });
   // }
@@ -39,7 +39,7 @@ public class LauncherSub extends SubsystemBase {
   }
   public void setFeedWheel(double speed) {
     //feed goes opposite launch
-    downLauncher.set(-speed);
+    downLauncher.set(speed);
   }
   public void stop() {
     downLauncher.set(0);
